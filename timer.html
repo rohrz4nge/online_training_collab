@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="timer-interface visible white" id="timer">
+    <div class="timer-container">
+        <div class="timer-top">
+            <h2 id="timer_name"></h2>
+        </div>
+        <div class="timer-middle">
+            <div class="timer-info">
+                <p id="reps" class="time-info">Rep 1 - Set 1</p>
+                <p id="time" class="time">00:02</p>
+                <p id="exercise_name" class="time-info"> Countdown</p>
+            </div>
+        </div>
+        <div class="timer-bottom">
+            <!--<a id="back" class="menu-button" href="#"><i class="fa fa-step-backward"></i></a>-->
+            <a id="play" onclick="start_interval()" class="menu-button" href="#"><i class="fa fa-play"></i></a>
+            <a id="pause" onclick="interval.stop()" class="menu-button" href="#"><i class="fa fa-stop"></i></a>
+            <!--<a id="next" class="menu-button" href="#"><i class="fa fa-step-forward"></i></a>-->
+        </div>
+    </div>
+</div>
+
+<script src="interval_functions.js"></script>
+</body>
+</html>

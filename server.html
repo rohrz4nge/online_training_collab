@@ -1,26 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>server</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timer</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/peerjs@1.2.0/dist/peerjs.min.js"></script>
-    <script src="peer_functions.js"></script>
+    <meta name="theme-color" content="#ffeb3b">
 </head>
 <body>
-    <input type="text" placeholder="Server name" id="server_id">
+<header>
+    <h1>Interval Timer</h1>
+</header>
 
-    <button id="serve" onclick="set_up_server()">Start server</button>
+<div class="timers" id="timers">
+</div>
+<br>
+<form name="server-setup" id="server-setup">
+    <h3> Server config</h3>
+    <div class="input-wrapper">
+        <label for="server_name">Server name</label>
+        <input id="server_name" type="text" placeholder="Server name"/>
+    </div>
+    <div class="check-wrapper">
+        <label for="play_client_sound">Play sounds on client side</label>
+        <input type="checkbox" id="play_client_sound">
+    </div>
+    <button id="open_button">Open server</button>
+    <br>
+    <br>
+    <h3>Connected clients:</h3>
+    <p id="peer_list"></p>
+</form>
 
-    <h4>Participants</h4>
-    <div id="peerList"></div>
+<div class="config" id="config">
+</div>
+<div class="timer-interface white" id="timer">
+    <div class="timer-container">
+        <div class="timer-top">
+            <h2 id="current_timer_name"></h2>
+        </div>
+        <div class="timer-middle">
+            <div class="timer-info">
+                <p id="current_reps" class="time-info">Rep 1 - Set 1</p>
+                <p id="current_time" class="time">00:02</p>
+                <p id="exercise_name" class="time-info"> Countdown</p>
+            </div>
+        </div>
+        <div class="timer-bottom">
+            <a id="play" class="menu-button" href="#"><i class="fa fa-play"></i></a>
+            <a id="stop" class="menu-button" href="#"><i class="fa fa-stop"></i></a>
+        </div>
+    </div>
+</div>
 
-    <h4>Messages</h4>
-    <code
-            id="messageBoard"
-            style="display: block; height: 20em; overflow: scroll;"
-    >
-    </code>
-    <input id="message" type="text" placeholder="Message"/>
-    <button onclick="send()">send</button>
+<div id="new_timer" class="new-timer slideDown">
+    <div class="top-menu">
+        <a class="menu-button" href="javascript:void(0)" id="close_new_timer">&#10005;</a>
+        <a class="menu-button" href="javascript:void(0)" id="save_new_timer">&#10003;</a>
+    </div>
+    <form id="timer-setup" name="timer-setup">
+        <div class="input-wrapper">
+            <label for="timer_name">Name</label>
+            <input id="timer_name" type="text" placeholder="Name">
+        </div>
+        <div class="input-wrapper">
+            <label for="seconds_on">Seconds on</label>
+            <input id="seconds_on" type="text" placeholder="Seconds on" value="8">
+        </div>
+        <div class="input-wrapper">
+            <label for="seconds_off">Seconds off</label>
+            <input id="seconds_off" type="text" placeholder="Seconds off" value="2">
+        </div>
+        <div class="input-wrapper">
+            <label for="seconds_set_pause">Seconds of set pause</label>
+            <input id="seconds_set_pause" type="text" placeholder="Seconds off" value="2">
+        </div>
+        <div class="input-wrapper">
+            <label for="reps">Reps</label>
+            <input id="reps" type="text" placeholder="Reps" value="6">
+        </div>
+        <div class="input-wrapper">
+            <label for="sets">Sets</label>
+            <input id="sets" type="text" placeholder="Sets" value="6">
+        </div>
+        <div class="input-wrapper">
+            <label for="exercises">Exercises (separate with comma)</label>
+            <input id="exercises" type="text" placeholder="Exercises (separate with comma)">
+        </div>
+    </form>
+</div>
+<button class="add-timer" id="add_timer">+</button>
+
+<script src="server.js" type="module"></script>
 </body>
 </html>

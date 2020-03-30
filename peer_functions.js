@@ -1,36 +1,40 @@
+import {get_local_value} from "./persistency_functions.js";
+
 let client_connections = {}, hostConnection, peer_id, peer, registered = false;
 
-const randomDigits = function (n) {
+const randomDigits = function () {
     return Math.floor(100000 + Math.random() * 900000);
 };
 
 const set_peer_id = function (id) {
     peer_id = id;
 };
-const set_up_server = async function () {
-    set_peer_id(document.getElementById("server_id").value);
+export const set_up_server = async function () {
+    set_peer_id(document.getElementById("server_name").value);
     peer = new Peer(peer_id, {
         host: 'kfwong-server.herokuapp.com',
         port: 443,
         path: '/myapp',
         secure: true,
     });
+    console.log(peer);
     await configure_peerjs();
 };
 
-const set_up_client = async function () {
-    set_peer_id(document.getElementById("client_name").value + randomDigits(2));
+export const set_up_client = async function (data_callback, close_callback) {
+    set_peer_id(document.getElementById("client_name").value + randomDigits());
+    console.log("Peer ID", peer_id);
     peer = await new Peer(peer_id, {
         host: 'kfwong-server.herokuapp.com',
         port: 443,
         path: '/myapp',
         secure: true,
     });
-    await configure_peerjs();
+    await configure_peerjs(data_callback, close_callback);
 };
 
 
-const configure_peerjs = () => new Promise(function (resolve, reject) {
+const configure_peerjs = (data_callback = null, error_callback = null) => new Promise(function (resolve, reject) {
     peer.on('open', (id) => {
         resolve(true);
         registered = true;
@@ -44,11 +48,10 @@ const configure_peerjs = () => new Promise(function (resolve, reject) {
                 sender: 'SYSTEM',
                 message: `${connection.peer} joined.`
             };
-            updateMessageBoard(data.sender, data.message);
             broadcast(data);
         });
         connection.on('data', (data) => {
-            updateMessageBoard(data.sender, data.message);
+            if (data_callback) data_callback();
             broadcast(data);
         });
 
@@ -61,12 +64,9 @@ const configure_peerjs = () => new Promise(function (resolve, reject) {
             };
 
             updatePeerList();
-            updateMessageBoard(data.sender, data.message);
 
+            if (error_callback) error_callback();
             broadcast(data);
-
-            document.getElementById('hostId').innerText =
-                'NOT CONNECTED TO ANYONE';
         });
     });
 
@@ -76,42 +76,40 @@ const configure_peerjs = () => new Promise(function (resolve, reject) {
 
     peer.on('error', (error) => {
         console.log(error);
+        if (error_callback) error_callback();
         reject();
     });
 });
 
-async function join() {
-    await set_up_client();
+export async function join(data_callback, close_callback) {
+    await set_up_client(data_callback, close_callback);
     hostConnection = peer.connect(
-        document.getElementById('server_id').value,
+        get_local_value('server_name'),
     );
     hostConnection.on('open', () => {
-        document.getElementById(
-            'hostId',
-        ).innerText = `CONNECTED TO ${hostConnection.peer}.`;
+        console.log(`CONNECTED TO ${hostConnection.peer}.`);
     });
 
     hostConnection.on('data', (data) => {
-        updateMessageBoard(data.sender, data.message);
+        data_callback(data);
         updatePeerList(data.peers);
     });
 
     hostConnection.on('close', () => {
         peer.destroy();
-        location.reload();
+        close_callback();
     });
 }
 
-function updateMessageBoard(id, message) {
-    document.getElementById(
-        'messageBoard',
-    ).innerText += `[${id}]: ${message}\n`;
-}
-
 function updatePeerList(peerList) {
-    document.getElementById('peerList').innerText = peerList
-        ? peerList
-        : generatePeerList();
+    let peers = peerList ? peerList : generatePeerList();
+    let peer_list = peers.split(", ");
+    peer_list = peer_list.slice(0, peer_list.length - 1).map(x => x.substring(0, x.length - 6));
+    peers = peer_list.join(", ");
+    console.log(peers);
+    if (document.getElementById("peer_list")) {
+        document.getElementById("peer_list").innerText = peers;
+    } else console.log("Peers:", peers);
 }
 
 function generatePeerList() {
@@ -121,27 +119,11 @@ function generatePeerList() {
     return peer_list.join(', ');
 }
 
-function broadcast(data) {
+export function broadcast(data) {
     data.peers = generatePeerList();
     Object
         .values(client_connections)
         .forEach((connection) => connection.send(data))
 }
 
-function send() {
-    const data = {
-        sender: peer_id,
-        message: document.getElementById('message').value,
-    };
-
-    if (hostConnection) {
-        hostConnection.send(data);
-    }
-    if (Object.keys(client_connections).length > 0) {
-        broadcast(data);
-        updateMessageBoard(data.sender, data.message);
-    }
-
-    document.getElementById('message').innerText = '';
-}
-
+export {peer, hostConnection};

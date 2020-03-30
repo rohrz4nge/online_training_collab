@@ -1,0 +1,20 @@
+{
+  "app": {
+    "background": {
+      "scripts": ["start.js"]
+    }
+  },
+  "author": "Maximilian Lohmann",
+  "chrome": { "navigation": false },
+  "default_locale": "en",
+  "description": "An interval timer that allows you to customize the intervals",
+  "display": "standalone",
+  "launch_path": "/index.html",
+  "manifest_version": 2,
+  "name": "Shared Interval Timer",
+  "short_name": "Shared Interval Timer",
+  "background_color": "#FFFFFF",
+  "offline_enabled": true,
+  "theme_color": "#fff9c4",
+  "version": "1.0"
+}
