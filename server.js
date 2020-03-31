@@ -25,11 +25,11 @@ const start = async () => {
 const start_timer = (timer_name) => {
     console.log(get_timer(timer_name));
     set_local_value("selected_interval", JSON.stringify(get_timer(timer_name)));
-    start_interval();
     document.getElementById("timer").classList.add("visible");
     //document.getElementById("config").classList.remove("visible");
     set_local_value("play_client_sound", document.getElementById("play_client_sound").checked);
     set_local_value("server_name", document.getElementById("server_name").value);
+    start_interval();
 };
 
 const reset = () => {

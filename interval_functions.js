@@ -122,7 +122,7 @@ export const interval = {
                     seconds_off: interval.seconds_off,
                     seconds_set_pause: interval.seconds_set_pause,
                     exercises: interval.exercises,
-                    sound: get_local_value("play_client_sound"),
+                    sound: get_local_value("play_client_sound") === "true",
                 }});
         }
     },
@@ -187,7 +187,7 @@ const play_sound = function (type) {
         set_pause: [300, 1, 0.5],
         stop: [300, 2, 0.5]
     };
-    if (get_val("sound") || !get_val("start_time")) sound_generator.play(...types[type]);
+    if (get_val("sound") || typeof get_val("start_time") !== "number") sound_generator.play(...types[type]);
 };
 
 const sound_generator = {
