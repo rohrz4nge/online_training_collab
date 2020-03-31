@@ -23,7 +23,7 @@ const start_timer = (timer_name) => {
     start_interval();
     document.getElementById("timer").classList.add("visible");
     //document.getElementById("config").classList.remove("visible");
-    set_local_value("play_client_sound", document.getElementById("play_client_sound").value);
+    set_local_value("play_client_sound", document.getElementById("play_client_sound").checked);
     set_local_value("server_name", document.getElementById("server_name").value);
 };
 
