@@ -70,8 +70,8 @@ const append_timer = (timer_name) => {
     new_timer_div.classList.add("timer");
     new_timer_div.appendChild(new_a);
     document.getElementById("timers").appendChild(new_timer_div);
-    document.addEventListener('click',function(e){
-        if(e.target && (e.target.name === timer_name || e.target.parentElement.name === timer_name)){
+    document.addEventListener('click', function (e) {
+        if (e.target && (e.target.name === timer_name || e.target.parentElement.name === timer_name)) {
             start_timer(timer_name);
         }
     });
@@ -82,7 +82,7 @@ const update_timers_shown = () => {
     let all_timers = get_all_timers();
     if (Object.keys(all_timers).length <= 0) {
         let no_timers_div = document.createElement("div"), new_heading = document.createElement("h3");
-        new_heading.innerText = `It looks like you haven't configured any timers yet. Click on the orange "+" icon below to get started!`;
+        new_heading.innerText = `It looks like you haven't configured any timers yet. Click on the orange "+" icon below to get started! Then click on a timer to start it`;
         no_timers_div.appendChild(new_heading);
         no_timers_div.classList.add("no-timers");
         document.getElementById("timers").appendChild(no_timers_div);
@@ -97,4 +97,4 @@ document.getElementById("add_timer").addEventListener("click", add_timer);
 document.getElementById("open_button").addEventListener("click", start);
 document.getElementById("stop").addEventListener("click", reset);
 document.getElementById("close_new_timer").addEventListener("click", exit_timer);
-document.getElementById("save_new_timer").addEventListener("click", save_timer);
+window.save_timer = save_timer;

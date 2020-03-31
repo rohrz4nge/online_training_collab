@@ -57,38 +57,40 @@
 </div>
 
 <div id="new_timer" class="new-timer slideDown">
-    <div class="top-menu">
-        <a class="menu-button" href="javascript:void(0)" id="close_new_timer">&#10005;</a>
-        <a class="menu-button" href="javascript:void(0)" id="save_new_timer">&#10003;</a>
-    </div>
-    <form id="timer-setup" name="timer-setup">
-        <div class="input-wrapper">
-            <label for="timer_name">Name</label>
-            <input id="timer_name" type="text" placeholder="Name">
+    <form name="timer-setup" onsubmit="save_timer()">
+        <div class="top-menu">
+            <button type="reset" class="menu-button" id="close_new_timer">&#10005;</button>
+            <button type="submit" class="menu-button" id="save_new_timer">&#10003;</button>
         </div>
-        <div class="input-wrapper">
-            <label for="seconds_on">Seconds on</label>
-            <input id="seconds_on" type="text" placeholder="Seconds on" value="8">
-        </div>
-        <div class="input-wrapper">
-            <label for="seconds_off">Seconds off</label>
-            <input id="seconds_off" type="text" placeholder="Seconds off" value="2">
-        </div>
-        <div class="input-wrapper">
-            <label for="seconds_set_pause">Seconds of set pause</label>
-            <input id="seconds_set_pause" type="text" placeholder="Seconds off" value="2">
-        </div>
-        <div class="input-wrapper">
-            <label for="reps">Reps</label>
-            <input id="reps" type="text" placeholder="Reps" value="6">
-        </div>
-        <div class="input-wrapper">
-            <label for="sets">Sets</label>
-            <input id="sets" type="text" placeholder="Sets" value="6">
-        </div>
-        <div class="input-wrapper">
-            <label for="exercises">Exercises (separate with comma)</label>
-            <input id="exercises" type="text" placeholder="Exercises (separate with comma)">
+        <div id="timer-setup" class="timer-setup">
+            <div class="input-wrapper">
+                <label for="timer_name">Name</label>
+                <input id="timer_name" type="text" placeholder="Name" required>
+            </div>
+            <div class="input-wrapper">
+                <label for="seconds_on">Seconds on</label>
+                <input id="seconds_on" type="text" placeholder="Seconds on" value="8">
+            </div>
+            <div class="input-wrapper">
+                <label for="seconds_off">Seconds off</label>
+                <input id="seconds_off" type="text" placeholder="Seconds off" value="2">
+            </div>
+            <div class="input-wrapper">
+                <label for="seconds_set_pause">Seconds of set pause</label>
+                <input id="seconds_set_pause" type="text" placeholder="Seconds off" value="2">
+            </div>
+            <div class="input-wrapper">
+                <label for="reps">Reps</label>
+                <input id="reps" type="text" placeholder="Reps" value="6">
+            </div>
+            <div class="input-wrapper">
+                <label for="sets">Sets</label>
+                <input id="sets" type="text" placeholder="Sets" value="6">
+            </div>
+            <div class="input-wrapper">
+                <label for="exercises">Exercises (separate with comma)</label>
+                <input id="exercises" type="text" placeholder="Exercise1,Exercise2,...">
+            </div>
         </div>
     </form>
 </div>

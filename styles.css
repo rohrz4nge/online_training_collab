@@ -9,16 +9,16 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 body {
-	font-family: Open Sans, Arial, sans-serif;
-	padding: 0;
-	height: 100vh;
-	width: 100vw;
-        position: relative;
-	overflow: hidden;
+    font-family: Open Sans, Arial, sans-serif;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: scroll;
 }
 
 a:link, a:hover, a:visited, a:active {
-	color: inherit;
+    color: inherit;
 }
 
 .no-timers {
@@ -49,7 +49,7 @@ a:link, a:hover, a:visited, a:active {
 .timer {
     border-bottom: 1px solid #BDBDBD;
     max-height: 200px;
-    padding:2px;
+    padding: 2px;
     opacity: 1;
 }
 
@@ -91,8 +91,14 @@ a:link, a:hover, a:visited, a:active {
 }
 
 @keyframes removeTimer {
-    0% {max-height: 200px; opacity: 1;}
-    100% {max-height: 0; opacity: 0;}
+    0% {
+        max-height: 200px;
+        opacity: 1;
+    }
+    100% {
+        max-height: 0;
+        opacity: 0;
+    }
 }
 
 .removed {
@@ -144,20 +150,20 @@ a:link, a:hover, a:visited, a:active {
 }
 
 .timer-middle {
-	position: absolute;
-	top: 50%;
-	left: 0;
-	right: 0;
-	transform: translateY(-50%);
-	width: 90%;
-	margin: auto;
-	height: auto;
-	text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    width: 90%;
+    margin: auto;
+    height: auto;
+    text-align: center;
 }
 
 .timer-info p {
-	padding: 0;
-	margin: 20px auto;
+    padding: 0;
+    margin: 20px auto;
 }
 
 .white {
@@ -165,49 +171,49 @@ a:link, a:hover, a:visited, a:active {
 }
 
 .yellow {
-	background-color: #FFEB3B;
+    background-color: #FFEB3B;
 }
 
 .red {
-	background-color: #F44336;
+    background-color: #F44336;
 }
 
 .green {
-	background-color: #4CAF50;
+    background-color: #4CAF50;
 }
 
 .blue {
-	background-color: #2196F3;
+    background-color: #2196F3;
 }
 
 .yellow #save {
-	background-color: #8c8c00;
-	color: #ffff00;
+    background-color: #8c8c00;
+    color: #ffff00;
 }
 
 .blue #save {
-	background-color: #008077;
-	color: #00e6d7;
+    background-color: #008077;
+    color: #00e6d7;
 }
 
 .red #save {
-	color: #ff3333;
-	background-color: #951e1e;
+    color: #ff3333;
+    background-color: #951e1e;
 }
 
 .green #save {
-	color: #49e838;
-	background-color: #1e5f17;
+    color: #49e838;
+    background-color: #1e5f17;
 }
 
 .time-info {
-	font-size: 5ch;
-	font-style: italic;
+    font-size: 5ch;
+    font-style: italic;
 }
 
 .time {
-	font-size: 15ch;
-	line-height: 12vh;
+    font-size: 15ch;
+    line-height: 12vh;
 }
 
 header {
@@ -264,6 +270,9 @@ header h1 {
     color: #212121;
     padding: 14px 20px;
     display: inline-block;
+
+    background: none!important;
+    border: none;
 }
 
 .settings-menu {
@@ -289,7 +298,7 @@ header h1 {
     z-index: -1;
     top: 0;
     transition: opacity 0.25s linear;
-    opacity: 0;
+    opacity: 0
 }
 
 
@@ -308,7 +317,7 @@ header h1 {
 
 .settings-menu .fixed.bottom {
     padding: 15px;
-    border-top: 1px solid#BDBDBD;
+    border-top: 1px solid #BDBDBD;
     width: 100%;
     max-width: 290px;
 }
@@ -325,7 +334,7 @@ header h1 {
 }
 
 button.add-timer {
-    position: absolute;
+    position: fixed;
     right: 20px;
     bottom: 20px;
     width: 55px;
@@ -348,19 +357,24 @@ button.add-timer {
     box-shadow: 0 0 3px 0 #BDBDBD;
 }
 
-.top-menu a:last-of-type {
+.top-menu button:last-of-type {
     float: right;
 }
 
 .new-timer {
     position: fixed;
-    top: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     padding: 0;
     width: 100vw;
     z-index: 999;
     background: #fff;
     min-height: 100vh;
     opacity: 0;
+    display:block;
+    overflow: scroll;
 }
 
 .new-timer.slideUp .top-menu {
@@ -368,13 +382,19 @@ button.add-timer {
 }
 
 #timer-setup {
-    overflow: scroll;
+    display: block;
+    overflow: scroll !important;
     padding-top: 62px;
 }
+
 #server-setup {
     padding-top: 5px;
     padding-left: 20px;
 }
+#server-setup p {
+    padding-bottom: 50px;
+}
+
 #server-setup input:not([type="checkbox"]) {
     border-radius: 3px;
     border: 0;
@@ -388,6 +408,7 @@ button.add-timer {
     padding-top: 5px;
     padding-bottom: 10px;
 }
+
 .button {
     appearance: none;
     transition: border-color 0.2s ease;
@@ -409,12 +430,13 @@ button.add-timer {
     text-decoration: none;
     white-space: nowrap;
 }
+
 .disabled {
     pointer-events: none;
     cursor: default;
     text-decoration: none;
     border-color: rgba(0, 0, 0, 0.3);
-    color: rgba(0,0,0,0.3) !important;
+    color: rgba(0, 0, 0, 0.3) !important;
 }
 
 .check-wrapper {
@@ -427,15 +449,15 @@ button.add-timer {
 }
 
 #timer-setup input, #timer-setup textarea, #timer-setup select {
-	border-radius: 3px;
-	border: 0;
-	border-bottom: solid 1px #BDBDBD;
-	width: 100%;
-	padding: 10px 20px;
-	font-size: 1.25em;
-        font-family: Open Sans, sans-serif;
-        box-sizing: border-box;
-        display: block;
+    border-radius: 3px;
+    border: 0;
+    border-bottom: solid 1px #BDBDBD;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1.25em;
+    font-family: Open Sans, sans-serif;
+    box-sizing: border-box;
+    display: block;
 }
 
 .select-wrapper {
@@ -448,15 +470,26 @@ button.add-timer {
     font-weight: bold;
     text-align: center;
 }
+
 .select-wrapper select, .select-wrapper span {
     display: table-cell;
 }
 
-.min {text-align: left;}
-.sec {text-align: right;}
+.min {
+    text-align: left;
+}
 
-#back {float: left;}
-#next {float: right;}
+.sec {
+    text-align: right;
+}
+
+#back {
+    float: left;
+}
+
+#next {
+    float: right;
+}
 
 #timer-name {
     line-height: 60px;
@@ -467,7 +500,7 @@ button.add-timer {
 }
 
 #timer-menu-btn {
-	float: left;
+    float: left;
 }
 
 #timer-reset-btn {
@@ -476,14 +509,25 @@ button.add-timer {
     top: 0;
     right: 0;
 }
+
 @keyframes slideIn {
-    from {left: -100%;}
-    to {left: 0;}
+    from {
+        left: -100%;
+    }
+    to {
+        left: 0;
+    }
 }
+
 @keyframes slideOut {
-    from {left: 0;}
-    to {left: -100%;}
+    from {
+        left: 0;
+    }
+    to {
+        left: -100%;
+    }
 }
+
 .slideIn {
     -moz-animation: slideIn 0.25s ease-out;
     -webkit-animation: slideIn 0.25s ease-out;
@@ -491,6 +535,7 @@ button.add-timer {
     animation: slideIn 0.25s ease-out;
     left: 0;
 }
+
 .slideOut {
     -moz-animation: slideOut 0.25s ease-in;
     -webkit-animation: slideOut 0.25s ease-in;
@@ -498,14 +543,29 @@ button.add-timer {
     animation: slideOut 0.25s ease-in;
     left: -100%;
 }
+
 @keyframes slideUp {
-    from {top: 100%; opacity: 0;}
-    to {top: 0; opacity: 1;}
+    from {
+        top: 100%;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
 }
+
 @keyframes slideDown {
-    from {top: 0; opacity: 1;}
-    to {top: 100%; opacity: 0;}
+    from {
+        top: 0;
+        opacity: 1;
+    }
+    to {
+        top: 100%;
+        opacity: 0;
+    }
 }
+
 .slideUp {
     -moz-animation: slideUp 0.1s ease-in;
     -webkit-animation: slideUp 0.1s ease-in;
@@ -514,6 +574,7 @@ button.add-timer {
     top: 0;
     opacity: 1;
 }
+
 .slideDown {
     -moz-animation: slideDown 0.1s ease-out;
     -webkit-animation: slideDown 0.1s ease-out;
@@ -522,9 +583,13 @@ button.add-timer {
     top: 100%;
     opacity: 0;
 }
+
 @keyframes loaderSpin {
-    100% {transform: translateX(-50%) rotate(360deg);}
+    100% {
+        transform: translateX(-50%) rotate(360deg);
+    }
 }
+
 .loader {
     animation: loaderSpin 0.25s linear infinite;
     width: 50px;
