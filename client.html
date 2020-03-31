@@ -8,12 +8,19 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/peerjs@1.2.0/dist/peerjs.min.js"></script>
 </head>
-<body>
-<div class="config visible" id="config">
-    <input id="client_name" type="text" placeholder="Your name"/>
-    <input id="server_name" type="text" placeholder="Server name"/>
-    <button id="start_button">Start</button>
-</div>
+<body style="overflow: hidden !important;">
+    <form onsubmit="start()" id="timer-setup" class="timer-setup" style="overflow: hidden !important;">
+        <div class="input-wrapper">
+            <label for="client_name">Name</label>
+            <input id="client_name" type="text" placeholder="Your name" required/>
+        </div>
+        <div class="input-wrapper">
+            <label for="server_name">Server Name</label>
+            <input id="server_name" type="text" placeholder="Server name" required/>
+        </div>
+        <button type="submit" class="button" id="start_button">Start</button>
+    </form>
+</form>
 <div class="timer-interface white" id="timer">
     <div class="timer-container">
         <div class="timer-top">

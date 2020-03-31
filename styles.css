@@ -14,7 +14,7 @@ body {
     height: 100vh;
     width: 100vw;
     position: relative;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 a:link, a:hover, a:visited, a:active {
@@ -27,7 +27,7 @@ a:link, a:hover, a:visited, a:active {
     text-align: center;
     font-weight: normal;
     font-size: 1.5em;
-    height: 100px;
+    height: 150px;
 }
 
 .input-wrapper {
@@ -374,7 +374,7 @@ button.add-timer {
     min-height: 100vh;
     opacity: 0;
     display:block;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .new-timer.slideUp .top-menu {
@@ -383,8 +383,9 @@ button.add-timer {
 
 #timer-setup {
     display: block;
-    overflow: scroll !important;
+    overflow-y: scroll;
     padding-top: 62px;
+    padding-bottom: 50px;
 }
 
 #server-setup {

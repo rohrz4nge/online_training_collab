@@ -19,7 +19,6 @@ const start = async () => {
     console.log("starting");
     //save_values();
     document.getElementById("timer").classList.add("visible");
-    document.getElementById("config").classList.remove("visible");
     set_local_value("client_name", document.getElementById("client_name").value);
     set_local_value("server_name", document.getElementById("server_name").value);
     try {
@@ -32,7 +31,6 @@ const start = async () => {
 const reset = () => {
     interval.stop();
     document.getElementById("timer").classList.remove("visible");
-    document.getElementById("config").classList.add("visible");
 };
 
-document.getElementById("start_button").addEventListener("click", start);
+window.start = start;
