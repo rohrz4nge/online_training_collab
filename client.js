@@ -24,7 +24,8 @@ const start = async () => {
     try {
         await join(on_data_handler, reset);
     } catch (e) {
-        reset();
+        console.log(e);
+        //reset();
     }
 };
 
