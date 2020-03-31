@@ -1,22 +1,31 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>client</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <script src="https://cdn.jsdelivr.net/npm/peerjs@1.2.0/dist/peerjs.min.js"></script>
-        <script src="peer_functions.js"></script>
-        <style>
-            .full-width {
-                display: block;
-                width: -moz-available;
-            }
+    <title>client</title>
 
-        </style>
-    </head>
-    <body>
-    <a href="server.html">Start</a>
-    <a href="client.html">Join</a>
+    <script src="https://cdn.jsdelivr.net/npm/peerjs@1.2.0/dist/peerjs.min.js"></script>
+    <script src="peer_functions.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        .center {
+            display: flex;
+            margin: auto auto;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        .inner {
+        }
 
-    </body>
+    </style>
+</head>
+<body>
+<div class="center">
+    <a href="server.html" class="button inner">Start</a>
+    <a href="client.html" class="button inner">Join</a>
+</div>
+</body>
 </html>
