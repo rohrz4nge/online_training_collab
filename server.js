@@ -14,7 +14,12 @@ const get_timer = (name) => {
 };
 
 const start = async () => {
-    await set_up_server()
+    try {
+        await set_up_server(null, () => document.getElementById("open_button").classList.remove("disabled"));
+        document.getElementById("open_button").classList.add("disabled");
+    } catch (e) {
+        console.log(e);
+    }
 };
 
 const start_timer = (timer_name) => {

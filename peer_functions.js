@@ -9,7 +9,7 @@ const randomDigits = function () {
 const set_peer_id = function (id) {
     peer_id = id;
 };
-export const set_up_server = async function () {
+export const set_up_server = async function (data_callback, close_callback) {
     set_peer_id(document.getElementById("server_name").value);
     peer = new Peer(peer_id, {
         host: 'kfwong-server.herokuapp.com',
@@ -18,7 +18,7 @@ export const set_up_server = async function () {
         secure: true,
     });
     console.log(peer);
-    await configure_peerjs();
+    await configure_peerjs(data_callback, close_callback);
 };
 
 export const set_up_client = async function (data_callback, close_callback) {

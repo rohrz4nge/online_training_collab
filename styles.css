@@ -382,6 +382,34 @@ button.add-timer {
     padding-top: 5px;
     padding-bottom: 10px;
 }
+.button {
+    appearance: none;
+    transition: border-color 0.2s ease;
+    background-color: transparent;
+    border: 1px solid #4CAF50;
+    border-radius: 3em;
+    color: #000000 !important;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 10pt;
+    font-weight: 600;
+    height: calc(3.5em + 2px);
+    letter-spacing: 0.05em;
+    line-height: 3.5em;
+    outline: 0;
+    padding: 0 2.5em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    border-color: rgba(0, 0, 0, 0.3);
+    color: rgba(0,0,0,0.3) !important;
+}
 
 .check-wrapper {
     padding-bottom: 20px;
