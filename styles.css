@@ -201,22 +201,23 @@ a:link, a:hover, a:visited, a:active {
 }
 
 .time-info {
-	font-size: 6vh;
+	font-size: 5ch;
 	font-style: italic;
 }
 
 .time {
-	font-size: 20vh;
+	font-size: 15ch;
 	line-height: 12vh;
 }
 
 header {
-    display: flex;
+    display: block;
     background-color: #0049ff;
     cursor: default;
     padding: 1em 2em;
     width: 100%;
     line-height: 2;
+    box-sizing: border-box;
 }
 
 header h1 {
