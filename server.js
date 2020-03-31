@@ -20,6 +20,7 @@ const start = async () => {
     } catch (e) {
         console.log(e);
     }
+    return false;
 };
 
 const start_timer = (timer_name) => {
@@ -55,6 +56,7 @@ const save_timer = () => {
     set_local_value("all_timers", JSON.stringify(all_timers));
     update_timers_shown();
     exit_timer();
+    return false;
 };
 
 const clear_timers_shown = () => {

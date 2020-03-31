@@ -27,6 +27,7 @@ const start = async () => {
         console.log(e);
         //reset();
     }
+    return false;
 };
 
 const reset = () => {
